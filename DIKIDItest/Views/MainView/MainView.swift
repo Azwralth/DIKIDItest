@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject private var viewModel = MainViewModel(networkManager: NetworkManager())
+    @State private var viewModel = MainViewModel(networkManager: NetworkManager(), storage: UserDefaultsStorageService())
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -49,6 +49,7 @@ struct MainView: View {
                 }
             }
             .task {
+                viewModel.loadCachedData()
                 await viewModel.fetchBalance()
                 await viewModel.fetchEmployee()
             }
