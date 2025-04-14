@@ -7,19 +7,19 @@
 
 import Foundation
 
-struct ApiResponceEmployee: Decodable, Hashable {
+struct ApiResponceEmployee: Codable, Hashable {
     let record: MainEmployee
 }
 
-struct MainEmployee: Decodable, Hashable {
+struct MainEmployee: Codable, Hashable {
     let data: DataClass
 }
 
-struct DataClass: Decodable, Hashable {
+struct DataClass: Codable, Hashable {
     let list: [MainList]
 }
 
-struct MainList: Decodable, Hashable {
+struct MainList: Codable, Hashable {
     let employee: Employee
     let payrollBalanceBegin: String
     let overpaymentBegin: String?
@@ -38,7 +38,7 @@ struct MainList: Decodable, Hashable {
     }
 }
 
-struct Employee: Decodable, Hashable {
+struct Employee: Codable, Hashable {
     let id: String
     let icon: String
     let fullname, statusID: String
@@ -56,7 +56,7 @@ struct Employee: Decodable, Hashable {
     }
 }
 
-enum StatusTitle: String, Decodable, Hashable {
+enum StatusTitle: String, Codable, Hashable {
     case активен = "Активен"
 }
 

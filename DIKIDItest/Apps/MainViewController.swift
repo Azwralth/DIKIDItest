@@ -30,8 +30,7 @@ final class MainViewController: UIViewController {
     @objc func openSwiftUIView() {
         let view = MainView()
         let hostingController = UIHostingController(rootView: view)
-        hostingController.modalPresentationStyle = .fullScreen
-        present(hostingController, animated: true)
+        navigationController?.pushViewController(hostingController, animated: true)
     }
     
     private func setupConstraints() {

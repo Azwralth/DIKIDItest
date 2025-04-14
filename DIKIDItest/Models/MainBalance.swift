@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct ApiResponceBalance: Decodable {
+struct ApiResponceBalance: Codable {
     let record: MainBalance
 }
 
-struct MainBalance: Decodable {
+struct MainBalance: Codable {
     let data: Balance
 }
 
-struct Balance: Decodable {
+struct Balance: Codable {
     let payrollBalanceBegin: String
     let overpaymentBegin: String?
     let payrollBalanceEnd: String
