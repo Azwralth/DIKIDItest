@@ -32,7 +32,9 @@ final class MainViewModel: ObservableObject {
             let responce = try await networkManager.fetch(type: ApiResponceEmployee.self, from: EmployeeList())
             self.employee = responce.record.data.list
         } catch {
-            
+            self.error = .unknownError(0)
         }
     }
 }
+
+
