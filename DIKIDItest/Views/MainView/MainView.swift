@@ -25,7 +25,7 @@ struct MainView: View {
                     
                     HStack {
                         Text("сотрудники")
-                            .font(.system(size: 20))
+                            .font(.system(size: 20).weight(.regular))
                             .padding(.leading, 36)
                         
                         Spacer()
@@ -85,7 +85,6 @@ struct MainView: View {
                 
             }
         }
-        
         .navigationBarBackButtonHidden(true)
         .ignoresSafeArea(.all, edges: .top)
     }
@@ -189,9 +188,8 @@ struct MainView: View {
             
             ScrollView {
                 VStack(spacing: 0) {
-                    ForEach(Array(viewModel.employee.enumerated()), id: \.element) { index, employee in
+                    ForEach(viewModel.employee, id: \.self) { employee in
                         EmployeeRow(employee: employee)
-                            .padding(.bottom, index == viewModel.employee.count - 1 ? 16 : 0)
                     }
                 }
             }
