@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct EmployeeRow: View {
-    
-    @StateObject private var imageViewModel = ImageLoaderViewModel(imageApi: NetworkImageManager())
         
     @State private var offsetX: CGFloat = 0
     
@@ -70,20 +68,17 @@ struct EmployeeRow: View {
             }
         }
         .background(Color.white)
-        .task {
-            await imageViewModel.loadImage(from: employee.employee.icon)
-        }
     }
     
     private var mainField: some View {
         HStack {
-            if let image = imageViewModel.image {
-                Image(uiImage: image)
+            AsyncImage(url: URL(string: employee.employee.icon)) { image in
+                image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 36, height: 36)
                     .clipShape(.rect(cornerRadius: 10))
-            } else {
+            } placeholder: {
                 ProgressView()
                     .frame(width: 36, height: 36)
             }
